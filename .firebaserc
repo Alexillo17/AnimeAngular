@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "login-cd982": {
+      "hosting": {
+        "LoginFirebase": [
+          "login-cd982"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "login-cd982"
+  }
+}

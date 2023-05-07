@@ -1,0 +1,12 @@
+<form>
+  <h3 class="titulo">Anime Angular</h3>
+  <div class="input-group mb-3, search">
+    <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Buscar un anime" name="search">
+    <div class="input-group-append">
+      <button type="button" (click)="search()" class="btn btn-success">Buscar</button>
+    </div>
+  </div>
+</form>
+<app-result-anime></app-result-anime>
+
+

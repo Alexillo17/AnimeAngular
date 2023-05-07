@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="body">
+    <img src="../../../assets/img/image.png" class="logo" alt="login">
+    <h1>Registrar</h1>
+    <form (ngSubmit)="registrar()"  [formGroup]="registrarUsuario">
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" formControlName="email"  placeholder="name@example.com">
+        <label for="floatingInput">Email</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" formControlName="password" placeholder="Password">
+        <label for="floatingPassword">Contraseña</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" formControlName="confirmarPassword" placeholder="Confirmar Password">
+        <label for="floatingPassword">Confirmar contraseña</label>
+      </div>
+
+      <div class="d-grid gap-2 mb-3">
+        <button class="btn btn-primary" type="submit">Registrar</button>
+      </div>
+      <a routerLink="/login">Volver</a>
+    </form>
+  </div>
+</div>
