@@ -2,23 +2,25 @@
 <button (click)="CambiaraModoOscuro()">Cambiar a modo oscuro</button>
 
 
-<div *ngIf="anime_results.length > 0" class="lista1" [ngClass]="darkmode">
-  <div [ngStyle]="cardSeparacion" class="card d-inline-block"   style="width: 18rem;" *ngFor="let anime of anime_results | paginate: { itemsPerPage: 4, currentPage: page }">
-      <img [src]="anime.images['jpg'].image_url" class="card-img-top" width="286" height="425">
-      <div class="card-body">
-        <h5 class="card-title">{{anime.title}}</h5>
-        <p class="card-text">Episodes: {{anime.episodes}}</p>
-        <p class="card-text">{{anime.synopsis.slice(0, 120)}}...</p>
-        <p class="card-text" [style.color]="anime.status === 'Finished Airing' ? 'red' : 'green'">{{anime.status}}</p>
+  <div *ngIf="anime_results.length > 0" class="lista1"  [ngClass]="darkmode">
+    <div class="card " style="width: 18rem;" *ngFor="let anime of anime_results | paginate: { itemsPerPage: 8, currentPage: page }">
+        <img [src]="anime.images['jpg'].image_url" class="card-img-top" width="286" height="425">
+        <div class="card-body" [ngClass]="darkmode">
+          <h5  class="card-title">{{anime.title}}</h5>
+          <p class="card-text" [ngClass]="darkmodetext">Episodes: {{anime.episodes}}</p>
+          <p class="card-text" [ngClass]="darkmodetext">{{anime.synopsis.slice(0, 120)}}...</p>
+          <p  [ngClass]="darkmodetext" class="card-text" [style.color]="anime.status === 'Finished Airing' ? 'red' : 'green'">{{anime.status}}</p>
+        </div>
       </div>
-    </div>
-</div>
 
-
-
-<div *ngIf="anime_results.length > 0" class="pagination">
-  <pagination-controls  (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
   </div>
+  <div *ngIf="anime_results.length > 0" class="pagination">
+    <pagination-controls  (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+    </div>
+
+
+
+
 
 
 

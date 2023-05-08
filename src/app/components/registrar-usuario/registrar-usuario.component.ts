@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -12,8 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 
 export class RegistrarUsuarioComponent implements OnInit {
   registrarUsuario: FormGroup;
+  loading: boolean = false;
 
-  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private toastr: ToastrService){
+  constructor(
+    private fb: FormBuilder,
+    private afAuth: AngularFireAuth,
+    private toastr: ToastrService,
+    private router: Router){
 
     this.registrarUsuario = this.fb.group({
       email: ['',Validators.required],
@@ -33,14 +39,18 @@ export class RegistrarUsuarioComponent implements OnInit {
 
     if(password !== confirmarPassword)
 {
-
   this.toastr.error('Las contraseñas deber ser iguales','Error');
   return;
 }
-    this.afAuth.createUserWithEmailAndPassword(email, password).then((user) =>{
-      console.log(user);
+
+this.loading = true;
+    this.afAuth.createUserWithEmailAndPassword(email, password)
+    .then(() =>{
+      this.loading = false;
+      this.toastr.success('El usario fue registrado con exito!', 'Usuario regitrado');
+      this.router.navigate(['/login']);
     }).catch((error)=>{
-      console.log(error);
+      this.loading = false;
       this.toastr.error(this.firebaseError(error.code),'Error');
     })
 

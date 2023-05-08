@@ -35,11 +35,13 @@ html, body{
 }
 
 .lista1 {
-background-color: aqua;
-justify-content: center;
-width: auto;
-height: auto;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+flex-wrap: wrap;
+margin-bottom: 20px;
 }
+
 
 .titulo{
   width: auto;
@@ -50,7 +52,7 @@ height: auto;
 }
 
 .pagination {
-  text-align: center;
+  justify-content: center;
 }
 
 .mostrarerror{
@@ -70,6 +72,10 @@ height: auto;
 
 .dark-mode{
   background-color: #4B4B4B;
+}
+
+.textdarkmode{
+  color: white;
 }
 
 

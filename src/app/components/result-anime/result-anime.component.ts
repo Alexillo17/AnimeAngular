@@ -17,11 +17,16 @@ export class ResultAnimeComponent implements OnInit{
     'dark-mode': false
    };
 
+   darkmodetext={
+     'textdarkmode': false
+   }
+
    cardSeparacion = { 'margin-left': '55px' ,'margin-bottom': '10px', 'width': '300px', 'height': '400px'};
 
    CambiaraModoOscuro()
    {
     this.darkmode['dark-mode']= true;
+    this.darkmodetext['textdarkmode'] = true;
    }
 
    page!: number;
